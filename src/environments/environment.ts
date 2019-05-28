@@ -5,7 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-
+    apiKey: "AIzaSyAi45BXhgbPxJoMRaumg9jCK3SvURGcNCA",
+    authDomain: "infra-eea4e.firebaseapp.com",
+    databaseURL: "https://infra-eea4e.firebaseio.com",
+    projectId: "infra-eea4e",
+    storageBucket: "infra-eea4e.appspot.com",
+    messagingSenderId: "318183653806",
+    appId: "1:318183653806:web:861208add50e1e97"
   }
 };
 
