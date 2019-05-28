@@ -7,6 +7,9 @@ import { TaqueriaComponent } from './components/taqueria/taqueria.component';
 import { VentaComponent } from './components/venta/venta.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
 
+import {AngularFireModule} from '@angular/fire';
+import { environment } from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +19,9 @@ import { ChatbotComponent } from './components/chatbot/chatbot.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
