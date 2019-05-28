@@ -1,4 +1,4 @@
-interface Taco{
+export interface Taco{
     idProd?: string;
     tipo?: string;
     precio?: number;
