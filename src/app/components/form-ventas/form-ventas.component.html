@@ -1,0 +1,27 @@
+<div class="card text-center">
+  <div class="card-header">
+    <h2>REGISTRAR VENTA</h2>
+  </div>  
+  <form (ngSubmit)="registrarVenta()">
+    <div class="card-body ">      
+        <label for="seltacos">taco de</label>      
+        <select name="seltacos" id="seltacos" class="form-control" [(ngModel)]="taco">          
+          <option value="pastor-56.76" selected="selected">Pastor</option>         														
+          <ng-container *ngFor="let t of tacos">
+              <option  *ngIf="t.existencia != 'agotado'" value="t.tipo-t.precio">{{t.tipo}}  {{t.precio}}</option>	
+          </ng-container> 
+				</select>
+        <label for="numero">Cantidad</label>
+        <input type="number" name="numero" id="numero" class="form-control" step="0.01" min="0" aria-valuemin="0" value="0" [(ngModel)]="cantidad">      
+        <button type="button" (click)="agregarAPedido()" class="btn btn-secondary mt-3">Agregar mas</button>
+        <div *ngIf="ventaActual">
+          <ul>
+            <li *ngFor="let v of ventaActual">{{v.cantidad}} tacos de {{v.tipo}} subtotal: ${{v.subtotal}}</li>
+          </ul>
+        </div>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-success">Guardar venta</button>
+    </div>
+  </form>
+</div>

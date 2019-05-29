@@ -13,6 +13,7 @@ export class VentasService {
   constructor(private db:AngularFirestore)
    {
      this.ventasCollections = this.db.collection("ventas");
+     
      this.ventas = this.ventasCollections.snapshotChanges().pipe(
        map(
          actions => actions.map(
@@ -24,5 +25,17 @@ export class VentasService {
        ));
 
     }
+    getVentas(){
+      return this.ventas;
+    }
+  
+    addVenta(venta:Venta){
+      this.ventasCollections.doc(venta.idVenta).set(venta);
+    }
 
+  
+   updateVenta(venta:Venta){
+      this.ventaDoc = this.db.doc(`ventas/${venta.idVenta}`);
+      this.ventaDoc.update(venta);
+    }
 }
