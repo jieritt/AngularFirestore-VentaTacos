@@ -1,0 +1,12 @@
+<form (ngSubmit)="addTaco()">
+
+  <input type="text" name="tipo" [(ngModel)]="tacos.tipo" >
+  <input type="number" name="precio" [(ngModel)]="tacos.precio">
+  <input type="text" name="existencia" [(ngModel)]="tacos.existencia">
+
+  <button type="submit">
+    Guardar
+  </button>
+
+
+</form>

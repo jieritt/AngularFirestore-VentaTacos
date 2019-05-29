@@ -1,3 +1,23 @@
-<p>
-  taqueria works!
-</p>
+<div *ngIf="taqueria.length > 0; else nohayregistro">
+  <ul>
+    <li *ngFor="let t of taqueria">
+      {{t.tipo}} <br/>
+      {{t.precio}} <br/>
+      {{t.existencia}}
+
+
+      <button (click)="deleteTipoTaco($event, t)">
+        Eliminar
+      </button>
+    </li>
+  </ul>
+
+</div>
+  
+ 
+
+<ng-template #nohayregistro>
+  <p>No hay tipos de tacos rgistrados</p>
+
+</ng-template>
+

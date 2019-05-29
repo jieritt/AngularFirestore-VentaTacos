@@ -11,12 +11,14 @@ import { ChatbotComponent } from './components/chatbot/chatbot.component';
 import {AngularFireModule} from '@angular/fire';
 import { environment } from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { FormTaqueriaComponent } from './components/form-taqueria/form-taqueria.component';
 @NgModule({
   declarations: [
     AppComponent,
     TaqueriaComponent,
     VentaComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    FormTaqueriaComponent
   ],
   imports: [
     BrowserModule,
