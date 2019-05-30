@@ -13,6 +13,8 @@ import { environment } from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { FormVentasComponent } from './components/form-ventas/form-ventas.component';
 import { FormTaqueriaComponent } from './components/form-taqueria/form-taqueria.component';
+import { CabeceraComponent } from './components/cabecera/cabecera.component';
+import { VentaDetalleComponent } from './components/venta-detalle/venta-detalle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { FormTaqueriaComponent } from './components/form-taqueria/form-taqueria.
     VentaComponent,
     ChatbotComponent,
     FormVentasComponent,
-    FormTaqueriaComponent
+    FormTaqueriaComponent,
+    CabeceraComponent,
+    VentaDetalleComponent
   ],
   imports: [
     BrowserModule,

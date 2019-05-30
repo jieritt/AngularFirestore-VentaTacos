@@ -1,4 +1,4 @@
-<div *ngIf="ventas.length>0; else sinventas">
+<div *ngIf="ventas; else sinventas">
   <h1>VENTAS DE TACOS</h1>
   <ul class="list-group">
     <li *ngFor="let v of ventas; let i=index" class="list-group-item list-group-item-action">      
@@ -6,22 +6,27 @@
       <h5><strong>FECHA:</strong> {{v.fecha}}</h5>      
       <h5><strong>TOTAL:</strong> ${{v.total}}</h5>
       <h5 class="bg-info text-white p-2 text-center"><strong>{{v.estado | uppercase}}</strong></h5>    
-      <div class="text-center">
+      <div class="btn-group">
         <button *ngIf="v.estado!== 'cancelada'" (click)="cambiarEstado($event,v)" class="btn btn-danger">Cancelar venta</button>
-        <button (click)="verDetalle($event,v)" class="btn btn-primary">Ver detalle</button>
+        <button (click)="verDetalle($event,v,i)" class="btn btn-primary">Ver detalle</button>
       </div>        
-      <div *ngIf="detalle" class="mt-4">                  
+      <div *ngIf="v.verDetalle" class="mt-4">                  
         <table *ngIf="detVenta.length>0" class="table table-hover">
           <tr>
             <th>Taco</th>
             <th>Cantidad</th>
             <th>Subtotal</th>
-          </tr>
-          <tr *ngFor="let d of detVenta">
-            <td>{{d.idTaco}}</td>
-            <td>{{d.cantidad}}</td>
-            <td>{{d.subtotal}}</td>
-          </tr>
+          </tr>          
+
+            <tr *ngFor="let d of detVenta">
+                <ng-container *ngIf="idVenta === d.idVenta">
+                  <td>{{d.tipoTaco}}</td>
+                  <td>{{d.cantidad}}</td>
+                  <td>{{d.subtotal}}</td>
+                </ng-container>
+            </tr>
+          
+          
         </table>
       </div>
     </li>
