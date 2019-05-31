@@ -3,25 +3,38 @@
     <h2>REGISTRAR VENTA</h2>
   </div>  
   <form (ngSubmit)="registrarVenta()">
-    <div class="card-body ">      
-        <label for="seltacos">taco de</label>      
-        <select name="seltacos" id="seltacos" class="form-control" [(ngModel)]="taco">          
-          <option value="pastor-56.76" selected="selected">Pastor</option>         														
-          <ng-container *ngFor="let t of tacos">
-              <option  *ngIf="t.existencia != 'agotado'" value="t.tipo-t.precio">{{t.tipo}}  {{t.precio}}</option>	
-          </ng-container> 
+    <div class="card-body ">   
+        <div *ngIf="pedir">										
+            <p class="alert alert-danger text-justify alert-dismissable">
+              <button class="close" type="button" data-dismiss="alert">&times;</button>
+              <strong>Error</strong> no se completo la operacion verifique que los campos no esten vacios.
+            </p>                      
+        </div>       
+      <label for="taco">Seleccione un taco</label>        
+        <select name="taco" id="taco" class="form-control" [(ngModel)]="taco">            
+          <ng-container *ngIf="tacos.length>0">                           
+              <ng-container *ngFor="let t of tacos">
+                  <option *ngIf="t.existencia != agotado" value="{{t.idProd}}-{{t.precio}}-{{t.tipo}}">{{t.tipo | uppercase}} - ${{t.precio}}</option>	
+              </ng-container>
+          </ng-container>                  
+           
 				</select>
-        <label for="numero">Cantidad</label>
-        <input type="number" name="numero" id="numero" class="form-control" step="0.01" min="0" aria-valuemin="0" value="0" [(ngModel)]="cantidad">      
-        <button type="button" (click)="agregarAPedido()" class="btn btn-secondary mt-3">Agregar mas</button>
-        <div *ngIf="ventaActual">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" name="cantidad" id="cantidad" class="form-control" step="1" min="0" value="0" [(ngModel)]="cantidad">      
+        <button type="button" (click)="agregarAPedido()" class="btn btn-secondary mt-3">Agregar al carrito</button>
+        <div *ngIf="detalleVenta" class="mt-3">
+          <hr/>
           <ul>
-            <li *ngFor="let v of ventaActual">{{v.cantidad}} tacos de {{v.tipo}} subtotal: ${{v.subtotal}}</li>
+            <li *ngFor="let v of detalleVenta">{{v.cantidad}} tacos de {{v.tipoTaco}} subtotal: ${{v.subtotal}}</li>
           </ul>
         </div>
     </div>
     <div class="card-footer">
-      <button type="submit" class="btn btn-success">Guardar venta</button>
+      <div class="btn-group">
+
+        <button type="submit" class="btn btn-success">Guardar venta</button>
+        <button type="button" (click)="cancelarVta()" class="btn btn-danger">Cancelar venta</button>
+      </div>
     </div>
   </form>
 </div>

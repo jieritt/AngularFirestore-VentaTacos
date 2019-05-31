@@ -3,4 +3,5 @@ export interface Venta{
     estado?: string;
     total?: number;
     fecha?:string;
+    verDetalle?:boolean;
 }

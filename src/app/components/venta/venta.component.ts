@@ -10,10 +10,10 @@ import { DetalleventaService } from 'src/app/services/detalleventa.service';
 })
 export class VentaComponent implements OnInit {
 
-  ventas = [];    
+  ventas: Venta[];    
   detVenta=[];
-  venta:Venta;
-  detalle:boolean=false;  
+  venta:Venta;   
+  idVenta:string;
   num:number;
   constructor(private servicioVenta:VentasService,private servicioDetalleV:DetalleventaService) 
   { 
@@ -32,13 +32,19 @@ export class VentaComponent implements OnInit {
     this.venta.estado='cancelada';
     this.servicioVenta.updateVenta(this.venta);
   }
-  verDetalle(ev,venta){
-    this.servicioDetalleV.getDetalleVenta(venta).subscribe(
+  verDetalle(ev,venta,indice){  
+    this.idVenta=venta.idVenta;    
+    for(let i=0;i<this.ventas.length;i++){
+      if(indice==i)
+        this.ventas[indice].verDetalle=!this.ventas[indice].verDetalle;
+      else
+        this.ventas[i].verDetalle=false;
+    }
+    this.servicioDetalleV.getDetalleVentas().subscribe(
       datos=>{
-        this.detVenta=datos;
+        this.detVenta=datos;                
       }
-    );
-    this.detalle = !this.detalle;
+    );    
   }
   incNum(){
     try{

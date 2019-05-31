@@ -22,28 +22,14 @@ export class DetalleventaService {
          actions => actions.map(
            a=>{
              const data = a.payload.doc.data() as DetalleVenta;
-             data.idVenta = a.payload.doc.id;             
+             data.idDetalle = a.payload.doc.id;             
              return data;
            })
        ));
   }
   getDetalleVentas(){
     return this.detalleVentas;
-  }
-  getDetalleVenta(venta: Venta){
-    this.detalleVentaCollections = this.db.collection("detalleventa",ref=>ref.where('idVenta','==',venta.idVenta));
-     
-    this.detalleVenta = this.detalleVentaCollections.snapshotChanges().pipe(
-      map(
-        actions => actions.map(
-          a=>{
-            const data = a.payload.doc.data() as DetalleVenta;
-            data.idVenta = a.payload.doc.id;             
-            return data;
-          })
-      ));
-      return this.detalleVenta;
-  }
+  }  
   addDetalleVenta(venta:DetalleVenta){
     this.detalleVentasCollections.add(venta);
   }
