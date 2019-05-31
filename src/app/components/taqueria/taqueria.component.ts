@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 //importar la clase de services/tacos.service.ts
 import {TacosService } from '../../services/tacos.service';
+import { Taco } from 'src/app/models/taco';
 
 
 
@@ -13,6 +14,8 @@ import {TacosService } from '../../services/tacos.service';
 export class TaqueriaComponent implements OnInit {
 //propiedad arreglo de tacos
   taqueria = [];
+  editingTaqueria : Taco;
+  editing :boolean= false;
 
 
   //instancia para el servicio
@@ -32,4 +35,16 @@ export class TaqueriaComponent implements OnInit {
     this.tacoService.deleteTipoTaco(taqueria);
   }
 
+  editTipoTaco(event, taqueria){
+    this.editingTaqueria = taqueria;
+    this.editing = !this.editing;
+  }
+
+  updateTipoTaco(){
+    console.log(this.editTipoTaco);
+    
+    this.tacoService.updateTipoTaco(this.editingTaqueria);
+    this.editingTaqueria = { } as Taco;
+    this.editing = !this.editing;
+  }
 }

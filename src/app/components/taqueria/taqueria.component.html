@@ -1,23 +1,38 @@
+
+
 <div *ngIf="taqueria.length > 0; else nohayregistro">
+  <h2 class="form-group text-center">VARIEDAD</h2>
   <ul>
-    <li *ngFor="let t of taqueria">
-      {{t.tipo}} <br/>
-      {{t.precio}} <br/>
-      {{t.existencia}}
-
-
-      <button (click)="deleteTipoTaco($event, t)">
+    <li *ngFor="let t of taqueria" class="list-group-item list-group-item-action">
+      <h5> <strong>TIPO:</strong> {{t.tipo}}  </h5>
+      <h5><strong>PRECIO:</strong> ${{t.precio}}</h5>
+      <h5><strong>EXISTENCIA:</strong> {{t.existencia}}</h5>
+      <button (click)="deleteTipoTaco($event, t)" class="btn btn-danger">
         Eliminar
       </button>
+      <button (click)="editTipoTaco($event, t)" class="btn btn-primary">
+        Editar
+      </button>
+      <div *ngIf="editing && editingTaqueria.idProd == t.idProd">
+        <form (ngSubmit)="updateTipoTaco()">
+          <div class="form-group mt-3">
+            <input type="text" name="tipo" [(ngModel)] = "editingTaqueria.tipo" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="number" name="precio" [(ngModel)] = "editingTaqueria.precio" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="existencia" [(ngModel)] = "editingTaqueria.existencia" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Actualizar
+          </button>
+        </form>
+      </div>
     </li>
   </ul>
-
 </div>
-  
- 
-
 <ng-template #nohayregistro>
   <p>No hay tipos de tacos rgistrados</p>
-
 </ng-template>
 

@@ -41,4 +41,9 @@ export class TacosService {
      //para borrar
      this.tacosDoc.delete();
    }
+   updateTipoTaco(taco: Taco){
+     this.tacosDoc = this.db.doc(`tacos/${taco.idProd}`);
+     this.tacosDoc.update(taco);
+   }
+
 }

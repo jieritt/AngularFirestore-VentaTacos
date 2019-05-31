@@ -1,12 +1,20 @@
-<form (ngSubmit)="addTaco()">
 
-  <input type="text" name="tipo" [(ngModel)]="tacos.tipo" >
-  <input type="number" name="precio" [(ngModel)]="tacos.precio">
-  <input type="text" name="existencia" [(ngModel)]="tacos.existencia">
-
-  <button type="submit">
-    Guardar
-  </button>
-
-
-</form>
+<div class="card text-center">
+    <div class="card-header">
+      <h3>REGISTRAR TIPO DE TACOS</h3>
+  </div>
+  <form (ngSubmit)="addTaco()">
+      <div class="card-body">
+        <label for="tipo">Tipo</label>
+        <input type="text" class="form-control" name="tipo" [(ngModel)]="taqueria.tipo" >
+        <label for="precio">Precio</label>
+        <input type="number" class="form-control" name="precio" [(ngModel)]="taqueria.precio" step="1.00">
+        <label for="existencia">Existencia</label>
+        <input type="text" class="form-control" name="existencia" [(ngModel)]="taqueria.existencia">
+        <button type="submit" class="btn btn-success mt-3">
+          Guardar
+        </button>
+      </div>
+    </form>
+</div>
+    

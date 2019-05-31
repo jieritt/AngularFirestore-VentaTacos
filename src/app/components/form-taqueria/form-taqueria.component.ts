@@ -22,6 +22,11 @@ export class FormTaqueriaComponent implements OnInit {
   }
 
   addTaco(){
+    if(this.taqueria.tipo != '' && this.taqueria.precio != 0 && this.taqueria.existencia != ''){
+      this.tacosService.addTaco(this.taqueria);
+      this.taqueria = {} as Taco; //limpie el formulario
+    }
+    
     
   }
 
