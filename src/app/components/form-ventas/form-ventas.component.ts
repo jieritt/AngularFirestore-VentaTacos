@@ -4,6 +4,7 @@ import { DetalleventaService } from 'src/app/services/detalleventa.service';
 import { TacosService } from 'src/app/services/tacos.service';
 import { DetalleVenta } from 'src/app/models/detalleVenta';
 import { Venta } from 'src/app/models/venta';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-form-ventas',
@@ -22,17 +23,20 @@ export class FormVentasComponent implements OnInit {
   agotado='agotado';
   pedir=false;
   
-  constructor(private servicioVenta:VentasService,private servicioDetalle:DetalleventaService,private servicioTaco:TacosService) 
-  { }
+  constructor(private servicioVenta:VentasService,private servicioDetalle:DetalleventaService,private servicioTaco:TacosService,private db:AngularFirestore) 
+  {    
+    
+   }
 
   ngOnInit() {    
-      this.total=0;
-      this.servicioTaco.getTacos().subscribe(
-        datos=>{this.tacos=datos;
-        }
-      );
-      this.taco='';
-    this.cantidad=0;
+    this.servicioTaco = new TacosService(this.db);
+    this.total=0;
+    this.servicioTaco.getTacos().subscribe(
+      datos=>{this.tacos=datos;
+      }
+    );
+    this.taco='';
+  this.cantidad=0;
   }
 
   registrarVenta(){

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VentasService } from '../../services/ventas.service';
 import { Venta } from '../../models/venta';
 import { DetalleventaService } from 'src/app/services/detalleventa.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-venta',
@@ -15,15 +16,19 @@ export class VentaComponent implements OnInit {
   venta:Venta;   
   idVenta:string;
   num:number;
-  constructor(private servicioVenta:VentasService,private servicioDetalleV:DetalleventaService) 
+  
+  constructor(private servicioVenta:VentasService,private servicioDetalleV:DetalleventaService,private db:AngularFirestore) 
   { 
     this.num=0;
   }
 
   ngOnInit() {
+    this.servicioVenta = new VentasService(this.db);
     this.servicioVenta.getVentas().subscribe(
       datos =>{this.ventas=datos;}
     );    
+    
+    
   }  
 
 

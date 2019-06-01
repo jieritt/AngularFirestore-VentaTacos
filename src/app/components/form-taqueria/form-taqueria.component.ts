@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //importar la clase de services/tacos.service.ts
 import {TacosService } from '../../services/tacos.service';
 import { Taco } from 'src/app/models/taco';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-form-taqueria',
@@ -12,7 +13,7 @@ export class FormTaqueriaComponent implements OnInit {
 
   taqueria = { } as Taco;
 
-  constructor(public tacosService: TacosService) { 
+  constructor(public tacosService: TacosService,private db:AngularFirestore) { 
 
   }
 

@@ -15,6 +15,7 @@ import { FormVentasComponent } from './components/form-ventas/form-ventas.compon
 import { FormTaqueriaComponent } from './components/form-taqueria/form-taqueria.component';
 import { CabeceraComponent } from './components/cabecera/cabecera.component';
 import { VentaDetalleComponent } from './components/venta-detalle/venta-detalle.component';
+import { TacosComponent } from './components/tacos/tacos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { VentaDetalleComponent } from './components/venta-detalle/venta-detalle.
     FormVentasComponent,
     FormTaqueriaComponent,
     CabeceraComponent,
-    VentaDetalleComponent
+    VentaDetalleComponent,
+    TacosComponent
   ],
   imports: [
     BrowserModule,

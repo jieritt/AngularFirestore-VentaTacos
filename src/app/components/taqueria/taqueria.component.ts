@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 //importar la clase de services/tacos.service.ts
 import {TacosService } from '../../services/tacos.service';
 import { Taco } from 'src/app/models/taco';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 
@@ -19,14 +20,15 @@ export class TaqueriaComponent implements OnInit {
 
 
   //instancia para el servicio
-  constructor(public tacoService:TacosService) { }
+  constructor(public tacoService:TacosService,private db:AngularFirestore) { }
 
 
   //cuando el componente a sido inicializado proporciona los tacos
 
   ngOnInit() {
+    this.tacoService = new TacosService(this.db);
     this.tacoService.getTacos().subscribe(tacos =>{
-      console.log(tacos);
+      // console.log(tacos);
       this.taqueria = tacos;
     } );
   }

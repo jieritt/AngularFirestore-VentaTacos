@@ -10,6 +10,7 @@ export class VentasService {
   ventasCollections: AngularFirestoreCollection<Venta>;
   ventas: Observable<Venta[]>;
   ventaDoc: AngularFirestoreDocument<Venta>;
+  s:string='333';
   constructor(private db:AngularFirestore)
    {
      this.ventasCollections = this.db.collection("ventas");
@@ -22,8 +23,7 @@ export class VentasService {
              data.idVenta = a.payload.doc.id;             
              return data;
            })
-       ));
-
+       ));              
     }
     getVentas(){
       return this.ventas;
