@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaqueriaComponent } from './components/taqueria/taqueria.component';
 import { VentaComponent } from './components/venta/venta.component';
-import { ChatbotComponent } from './components/chatbot/chatbot.component';
+
 
 import {AngularFireModule} from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -20,8 +20,7 @@ import { TacosComponent } from './components/tacos/tacos.component';
   declarations: [
     AppComponent,
     TaqueriaComponent,
-    VentaComponent,
-    ChatbotComponent,
+    VentaComponent,    
     FormVentasComponent,
     FormTaqueriaComponent,
     CabeceraComponent,

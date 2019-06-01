@@ -5,7 +5,7 @@
       <h3>VENTA {{i+1}}</h3>
       <h5><strong>FECHA:</strong> {{v.fecha}}</h5>      
       <h5><strong>TOTAL:</strong> ${{v.total}}</h5>
-      <h5 class="bg-info text-white p-2 text-center"><strong>{{v.estado | uppercase}}</strong></h5>    
+      <h5 class="text-white p-2 text-center info"><strong>{{v.estado | uppercase}}</strong></h5>    
       <div class="btn-group">
         <button *ngIf="v.estado!== 'cancelada'" (click)="cambiarEstado($event,v)" class="btn btn-danger">Cancelar venta</button>
         <button (click)="verDetalle($event,v,i)" class="btn btn-primary">Ver detalle</button>
